@@ -1,25 +1,52 @@
-class EquilateralTriangle
+class Triangle
   define_method(:initialize) do |side1, side2, side3|
     @side1 = side1
     @side2 = side2
     @side3 = side3
   end
 
-  define_method(:equal?) do
-    @side1.equal?(@side2)
-    @side1.equal?(@side3)
-    @side2.equal?(@side3)
+  define_method(:triangle?) do
+    if @side1 + @side2 <= @side3
+      false
+    elsif @side1 + @side3 <= @side2
+      false
+    elsif @side2 + @side3 <= @side1
+      false
+    else
+      true
+    end
   end
 
-  class IsoscelesTriangle
-    define_method(:two_equal?) do
+  define_method(:equilateral?) do
+    if @side1 == @side2 && @side1 == @side3
+      true
+    else
       false
     end
-
-end
-
-
-class WhichTriangle
-  define_method(:initialize) do |Equilateral, Isosceles, Scalene, NOT|
-    @
   end
+
+  define_method(:isosceles?) do
+    if @side1 == @side2 ||
+       @side2 == @side3 ||
+       @side3 == @side1
+      true
+    else
+      false
+    end
+  end
+
+  define_method(:scalene?) do
+    if @side1 != @side2 && @side2 !=@side3
+      true
+    else
+      false
+    end
+  end
+
+  define_method(:get_type) do
+     return "Equilateral" if equilateral?
+
+
+    end
+  end
+end
